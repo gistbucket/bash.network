@@ -30,7 +30,7 @@ currentUser=$(whoami)
 ########################################################################## NAME SAMBA GROUP HERE
 ############ NAME SAMBA GROUP HERE
 
-sambaShare="qShare" # Replace 'qShare' with your desired group name
+sambaShare="localShare" # Replace 'qShare' with your desired group name
 
 
 ########################################################################## NAME SHARE FOLDERS HERE
@@ -38,7 +38,6 @@ sambaShare="qShare" # Replace 'qShare' with your desired group name
 
 # This is the names of the FOLDERs that will be created in L
 S="shared"        # Change 'qSHARED' into what you want the folder be named.
-P="public"        # Change 'qPUBLIC' into what you want the folder be named.
 N="nfs-share"     # Change 'qNFS_SHARE' into what you want the folder be named.
 
 
@@ -212,7 +211,7 @@ echo -e "${YELLOW} Configuring NFS... ${NC}"
 
 # Configure NFS exports
 sudo tee -a /etc/exports > /dev/null <<EOL
-$nfsExportDir 192.168.0.0/24(rw,sync,no_subtree_check)
+$nfsExportDir 10.0.1.0/23(rw,sync,no_subtree_check)
 EOL
 
 sudo exportfs -ra  # Reload NFS exports
